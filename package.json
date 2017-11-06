@@ -1,0 +1,32 @@
+{
+  "name": "typescript-node-starter",
+  "version": "1.0.0",
+  "description": "TypeScript starter based on https://github.com/Microsoft/TypeScript-Node-Starter but without any implementation assumptions and no serving static assets or SASS",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/themoderngeek/typescript-node-starter"
+  },
+  "scripts": {
+    "start": "npm run build && npm run watch",
+    "build": "npm run build-ts && npm run tslint",
+    "serve": "nodemon dist/index.js",
+    "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run serve\"",
+    "test": "jest --forceExit",
+    "build-ts": "tsc",
+    "watch-ts": "tsc -w",
+    "tslint": "tslint -c tslint.json -p tsconfig.json",
+    "debug": "npm run build && npm run watch-debug",
+    "serve-debug": "nodemon --inspect dist/index.js",
+    "watch-debug": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run serve-debug\""
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^3.5.0",
+    "jest": "^21.2.1",
+    "nodemon": "^1.12.1",
+    "tslint": "^5.8.0",
+    "typescript": "^2.6.1"
+  }
+}
